@@ -1,0 +1,23 @@
+{
+  "name": "victory_intel",
+  "version": "1.0.0",
+  "description": "Leaders Data Management",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaadriano/victory_intel.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaadriano/victory_intel/issues"
+  },
+  "homepage": "https://github.com/jaadriano/victory_intel#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
+}
