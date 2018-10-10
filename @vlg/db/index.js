@@ -3,7 +3,7 @@ const Sequelize = require('sequelize');
 var db = {};
 
 const sequelize = new Sequelize('bingwit', 'root', 'password', {
-  host: 'localhost',
+  host: '127.0.0.1',
   dialect: 'mysql',
   operatorsAliases: false,
 

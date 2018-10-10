@@ -1,7 +1,7 @@
 //class User
 const jwt = require('jsonwebtoken');
 const db = require('sequelize');
-const crypto = require('crypto');
+// const crypto = require('crypto');
 const schema = require('./schema');
 
 var User = function (data) {
@@ -26,15 +26,15 @@ User.methods.findById = function (id, callback) {
 		callback(null, new User(data));
 	});
 }
-User.methods.setPassword = function(password) {
-  this.salt = crypto.randomBytes(16).toString('hex');
-  this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-};
+// User.methods.setPassword = function(password) {
+//   this.salt = crypto.randomBytes(16).toString('hex');
+//   this.hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+// };
 
-User.methods.validatePassword = function(password) {
-  const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
-  return this.hash === hash;
-};
+// User.methods.validatePassword = function(password) {
+//   const hash = crypto.pbkdf2Sync(password, this.salt, 10000, 512, 'sha512').toString('hex');
+//   return this.hash === hash;
+// };
 
 User.methods.toAuthJSON = function() {
   return {

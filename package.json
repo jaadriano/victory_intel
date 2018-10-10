@@ -19,7 +19,6 @@
   "homepage": "https://github.com/jaadriano/victory_intel#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "crypto": "^1.0.1",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
     "messagebird": "^2.2.0",
