@@ -1,14 +1,15 @@
 'use strict';
-// const bcrypt = require('./@vlg/helpers/index');
-const express = require('express');
-const db_mysql = require('mysql');
-const routes = require('./@vlg/routes/routes');
-const bodyParser = require("body-parser");
-const messageBird = require('./@vlg/middleware/messagebird/index');
-const app = express();
+const express             = require('express');
+const db_mysql            = require('mysql');
+const routes              = require('./@vlg/routes/routes');
+const bodyParser          = require("body-parser");
+//const messageBird         = require(`${__dirname}/@vlg/helpers/messageBird`);
+// const passwordHandler    = require(`${__dirname}/@vlg/helpers/passwordHandler`);
+//const s3Bucket            = require(`${__dirname}/@vlg/helpers/s3Bucket`);
+const app                 = express();
+var   http                = require('http');
+var   models              = require('./@vlg/db/index');
 
-var http = require('http');
-var models = require('./@vlg/db/index');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());

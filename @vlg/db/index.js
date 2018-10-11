@@ -2,8 +2,9 @@
 const Sequelize = require('sequelize');
 var db = {};
 
-const sequelize = new Sequelize('bingwit', 'root', 'password', {
-  host: '127.0.0.1',
+
+var sequelize = new Sequelize('bingwit', 'root', 'root', {
+  host: 'localhost',
   dialect: 'mysql',
   operatorsAliases: false,
 
@@ -14,6 +15,7 @@ const sequelize = new Sequelize('bingwit', 'root', 'password', {
     idle: 10000
   },
 });
+
 
 sequelize.authenticate()
   .then(function(err) {

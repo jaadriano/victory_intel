@@ -9,6 +9,7 @@ module.exports = (function() {
 	router.get('/test', controller.info);
 	router.post('/signup', registration.signup);
 	router.post('/signup/upload_photo', registration.signup_upload_photo);
+	router.post('/signup/verify_code', registration.verify_code);
 
     return router;
 })();

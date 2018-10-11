@@ -18,10 +18,14 @@
   },
   "homepage": "https://github.com/jaadriano/victory_intel#readme",
   "dependencies": {
+    "aws-sdk": "^2.331.0",
+    "bcrypt": "^2.0.1",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "generate-sms-verification-code": "^1.0.5",
     "jsonwebtoken": "^8.3.0",
     "messagebird": "^2.2.0",
+    "multer": "^1.4.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
     "sequelize": "^4.39.0"

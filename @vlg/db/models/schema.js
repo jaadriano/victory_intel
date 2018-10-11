@@ -13,6 +13,8 @@ var user = db.sequelize.define('user', {
 	area_id: { type: db.Sequelize.INTEGER, allowNull: true, defaultValue: 0, foreignKey: true},
 	rating:  { type: db.Sequelize.INTEGER, allowNull: true, defaultValue: null},
 	status: { type: db.Sequelize.STRING, allowNull: true, defaultValue: null},
+	verification_code: { type: db.Sequelize.STRING, allowNull: true, unique:true},
+	code_expiry: { type: db.Sequelize.DATE, allowNull: true, defaultValue: db.Sequelize.DATE.NOW},
 	createdAt: { type: db.Sequelize.DATE, allowNull: false, defaultValue: db.Sequelize.DATE.NOW},
 	approvedAt: { type: db.Sequelize.DATE, allowNull: true},
 	updatedAt: { type: db.Sequelize.DATE, allowNull: true},

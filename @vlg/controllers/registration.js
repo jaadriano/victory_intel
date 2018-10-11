@@ -1,19 +1,33 @@
+//ToDo
+
+//hash password using bcrypt
+//upload photo using s3-bucket
+//send verification code
+//create route for verify_code
+
 'use strict';
-const db = require('../db/index'); 
 
-var User = require('../db/models/user'); //remove after testing
+const db 				 = require('../db/index');
+const s3Bucket           = require(`${__dirname}/../../@vlg/helpers/s3Bucket`);
+const messageBird        = require(`${__dirname}/../../@vlg/helpers/messageBird`);
+//const passwordHandler    = require(`${__dirname}/../../@vlg/helpers/passwordHandler`);
+const code_generator 	 = require('generate-sms-verification-code');
+const User 				 = require('../db/models/user'); //remove after testing
+const queryCalls 		 = {
 
-const queryCalls = {
 	signup_upload_photo:function(req, res) {
+
 		console.log(req.body);
-		console.log(req.query);
+		console.log(req.body);
 		res.json({
 			status: 200,
 			message: "Successful"
 		});
 	},
 	signup:function(req, res) {
-		//get parameters from POST URL
+		
+		var expiry_offset = new Date(Date.now());
+		expiry_offset.setMinutes(expiry_offset.getMinutes() + 5);
 		var list = {
 			id:req.body.id,
 			type:req.body.type,
@@ -26,35 +40,41 @@ const queryCalls = {
 			area_id:req.body.area_id,
 			rating:req.body.rating,
 			status:req.body.status,
+			verification_code:code_generator(4, {type: 'number'}),
+			code_expiry:expiry_offset,
 			createdAt:req.body.createdAt,
 			approvedAt:req.body.approvedAt,
 			updatedAt:req.body.updatedAt,
 			deletedAt:req.body.deletedAt
 		};
-		//upload photo to S3-Bucket
-		//create user object with image_url
-		
-		var bcrypt = require('bcrypt');
-
 
 		var user1 = new User(list);
-			 
+
 		user1.data.save()
 		.then(anotherTask => {
 			res.json({
 				status: 200,
-				message: "Successful"});
-			})
+				message: "Successful"
+			});
 			//send verification code to user
-			//
+			
+		})
+
 		.catch(error => {
 			res.json({
 				status: 500,
 				message: "Error"
 			});
 		})
-		
-    }
+    },
+    verify_code:function(req, res) {
+		console.log(req.body);
+		console.log(req.body);
+		res.json({
+			status: 200,
+			message: "Successful"
+		});
+	},
 };
 module.exports = queryCalls;
 
